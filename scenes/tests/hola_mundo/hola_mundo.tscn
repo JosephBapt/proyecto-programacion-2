@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://s1rhhb7ugbyo"]
+
+[ext_resource type="Script" path="res://scenes/tests/hola_mundo/hola_mundo.gd" id="1_tpxd8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xkv60"]
+font_size = 80
+
+[node name="hola_mundo" type="Label"]
+offset_left = 266.0
+offset_top = 164.0
+offset_right = 516.0
+offset_bottom = 241.0
+label_settings = SubResource("LabelSettings_xkv60")
+script = ExtResource("1_tpxd8")
