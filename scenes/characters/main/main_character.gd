@@ -1,29 +1,38 @@
 extends CharacterBody2D
 
+const HORIZONTAL_SPEED = 150.0
+const JUMP_VELOCITY = -200.0
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
-
+@onready var sprite = $Sprite2D
+@onready var animation = $AnimationPlayer
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	handle_movement(delta)
+	move_and_slide()
+
+func handle_movement(delta: float) -> void:
+	handle_gravity(delta)
+	handle_jump()
+	handle_horizontal_movement()
+
+func handle_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+func handle_jump() -> void:
+	if Input.is_action_just_pressed("move_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var dirX := Input.get_axis("ui_left", "ui_right")
-	var dirY := Input.get_axis("ui_up", "ui_down")
-	if dirX or dirY:
-		#velocity.y = dirY * SPEED
-		velocity.x = dirX * SPEED
+func handle_horizontal_movement() -> void:
+	var dirX := Input.get_axis("move_left", "move_right")
+	if dirX:
+		if Input.is_action_pressed("move_right"):
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
+		animation.play("walk")
+		velocity.x = dirX * HORIZONTAL_SPEED
 		velocity.normalized()
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		#velocity.y = move_toward(velocity.y, 0, SPEED)
-
-	move_and_slide()
+		animation.play("idle")
+		velocity.x = move_toward(velocity.x, 0, HORIZONTAL_SPEED*0.2)
