@@ -59,7 +59,6 @@ _data = {
 size = Vector2(20, 10)
 
 [node name="main_character" type="CharacterBody2D"]
-position = Vector2(60, 22)
 script = ExtResource("1_m83o1")
 metadata/_edit_group_ = true
 
@@ -80,3 +79,9 @@ shape = SubResource("RectangleShape2D_f2tcw")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_f2tcw")

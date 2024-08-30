@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://itj6yh6oygph"]
+[gd_scene load_steps=6 format=4 uid="uid://itj6yh6oygph"]
 
 [ext_resource type="Texture2D" uid="uid://du81dkbpujs6j" path="res://assets/pixelfantasy_caves/mainlev_build.png" id="1_f3o2e"]
 [ext_resource type="PackedScene" uid="uid://dheiegrc0eh0i" path="res://scenes/characters/main/main_character_red.tscn" id="2_p1ie0"]
+[ext_resource type="PackedScene" uid="uid://c8qtn70opsl6v" path="res://scenes/elements/win_altar/win_altar.tscn" id="3_p2qsd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ar0v"]
 texture = ExtResource("1_f3o2e")
@@ -939,6 +940,9 @@ layer_0/tile_data = PackedInt32Array(-65535, 3080192, 3, -65534, 3145728, 3, -65
 use_parent_material = true
 tile_map_data = PackedByteArray("AAACAAAAAAAxAAEAAAAEAAAAAAAzAAEAAAAFAAAAAAA0AAEAAAAGAAAAAAA1AAEAAAAHAAAAAAA2AAEAAAAIAAAAAAA3AAEAAAAJAAAAAAA2AAEAAAAKAAAAAAA3AAEAAAAAAAAAAAAvAAEAAAALAAAAAAA2AAEAAAAMAAAAAAA3AAEAAAANAAAAAAA2AAEAAAAOAAAAAAA3AAEAAAAPAAAAAAAwAAEAAAABAAAAAAAwAAEAAAADAAAAAAAyAAEAAAAQAAAAAAAxAAEAAAARAAAAAAAyAAEAAAASAAAAAAAzAAEAAAATAAAAAAA0AAEAAAAUAAAAAAA1AAEAAAAVAAAAAAA2AAEAAAAWAAAAAAA3AAEAAAAXAAAAAAA4AAEAAAAYAAAAAAAwAAEAAAAZAAAAAAAxAAEAAAAaAAAAAAAyAAEAAAAbAAAAAAAzAAEAAAAcAAAAAAA0AAEAAAAdAAAAAAA1AAEAAAAeAAAAAAA2AAEAAAAfAAAAAAA3AAEAAAAgAAAAAAA4AAEAAAAhAAAAAAA5AAEAAAA=")
 tile_set = SubResource("TileSet_e4moa")
+
+[node name="WinAltar" parent="." instance=ExtResource("3_p2qsd")]
+position = Vector2(262, -32)
 
 [node name="main_character" parent="." instance=ExtResource("2_p1ie0")]
 position = Vector2(119, -36)

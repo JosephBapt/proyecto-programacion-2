@@ -59,7 +59,6 @@ _data = {
 size = Vector2(20, 10)
 
 [node name="main_character" type="CharacterBody2D"]
-position = Vector2(60, 22)
 script = ExtResource("1_m83o1")
 metadata/_edit_group_ = true
 

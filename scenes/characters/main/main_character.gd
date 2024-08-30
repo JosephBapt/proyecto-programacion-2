@@ -5,9 +5,14 @@ const JUMP_VELOCITY = -200.0
 
 @onready var sprite = $Sprite2D
 @onready var animation = $AnimationPlayer
+@onready var win_altar = $"../WinAltar"
+
+var end = 0
 
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
+	if end == 1:
+		queue_free()
 	move_and_slide()
 
 func handle_movement(delta: float) -> void:
