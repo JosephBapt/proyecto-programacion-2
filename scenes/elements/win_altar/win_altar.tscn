@@ -7,29 +7,29 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kiiq7"]
 size = Vector2(36, 56)
 
-[sub_resource type="Animation" id="Animation_wg70u"]
+[sub_resource type="Animation" id="Animation_whblj"]
 resource_name = "movement"
-length = 1.5
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Area2D/Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1666, 0.3333, 0.5, 0.6666, 0.8334, 1, 1.1666),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_p554g"]
+[sub_resource type="Animation" id="Animation_uu82b"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Area2D/Sprite2D:frame")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -39,10 +39,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_uhc1y"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qyoc2"]
 _data = {
-"RESET": SubResource("Animation_p554g"),
-"movement": SubResource("Animation_wg70u")
+"RESET": SubResource("Animation_uu82b"),
+"movement": SubResource("Animation_whblj")
 }
 
 [node name="WinAltar" type="Node2D"]
@@ -64,12 +64,7 @@ position = Vector2(0, 24)
 texture = ExtResource("2_iejd2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D"]
-root_node = NodePath("")
 libraries = {
-"": SubResource("AnimationLibrary_uhc1y")
+"": SubResource("AnimationLibrary_qyoc2")
 }
 autoplay = "movement"
-speed_scale = 3.0
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
