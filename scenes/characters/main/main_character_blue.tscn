@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://chlv6tt0tyqgc"]
 
 [ext_resource type="Script" path="res://scenes/characters/main/main_character.gd" id="1_m83o1"]
-[ext_resource type="Texture2D" uid="uid://cr5n6e8mtt1kg" path="res://assets/Rocky Roads/Enemies/slime_blue.png" id="1_qcx5q"]
+[ext_resource type="Texture2D" uid="uid://cuasn2l6ttc6i" path="res://assets/Rocky Roads/Enemies/slime_blue_high.png" id="2_xgq4s"]
 
 [sub_resource type="Animation" id="Animation_nr8li"]
 length = 0.001
@@ -56,14 +56,15 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2tcw"]
-size = Vector2(20, 10)
+size = Vector2(16, 10)
 
-[node name="main_character" type="CharacterBody2D"]
+[node name="main_character" type="CharacterBody2D" groups=["players"]]
 script = ExtResource("1_m83o1")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_qcx5q")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_xgq4s")
 hframes = 5
 vframes = 2
 
@@ -77,11 +78,5 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_f2tcw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(2.25, 2.25)
 position_smoothing_enabled = true
-
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 3)
-shape = SubResource("RectangleShape2D_f2tcw")

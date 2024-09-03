@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://itj6yh6oygph"]
+[gd_scene load_steps=11 format=4 uid="uid://itj6yh6oygph"]
 
-[ext_resource type="Texture2D" uid="uid://du81dkbpujs6j" path="res://assets/pixelfantasy_caves/mainlev_build.png" id="1_f3o2e"]
+[ext_resource type="Texture2D" uid="uid://du81dkbpujs6j" path="res://assets/pruebas/mainlev_build.png" id="1_f3o2e"]
 [ext_resource type="PackedScene" uid="uid://dheiegrc0eh0i" path="res://scenes/characters/main/main_character_red.tscn" id="2_p1ie0"]
+[ext_resource type="Resource" uid="uid://cdqq1y8mhtoqf" path="res://scenes/characters/player_1_controls.tres" id="3_i6vb5"]
 [ext_resource type="PackedScene" uid="uid://c8qtn70opsl6v" path="res://scenes/elements/win_altar/win_altar.tscn" id="3_p2qsd"]
+[ext_resource type="PackedScene" uid="uid://chlv6tt0tyqgc" path="res://scenes/characters/main/main_character_blue.tscn" id="4_m6swv"]
+[ext_resource type="Resource" uid="uid://dlnys2o2bxhny" path="res://scenes/characters/player_2_controls.tres" id="5_cxshw"]
+[ext_resource type="PackedScene" uid="uid://dydued2sxjb8m" path="res://scenes/elements/button/button.tscn" id="7_wxwf1"]
+[ext_resource type="PackedScene" uid="uid://c08oho5yfh0ph" path="res://scenes/menus/pause/pause_menu.tscn" id="8_2kg3g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ar0v"]
 texture = ExtResource("1_f3o2e")
@@ -931,6 +936,9 @@ sources/0 = SubResource("TileSetAtlasSource_2ar0v")
 [node name="Map1" type="Node2D"]
 position = Vector2(0, 38)
 
+[node name="Button" parent="." instance=ExtResource("7_wxwf1")]
+position = Vector2(211, -1)
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_e4moa")
 format = 2
@@ -941,8 +949,17 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAACAAAAAAAxAAEAAAAEAAAAAAAzAAEAAAAFAAAAAAA0AAEAAAAGAAAAAAA1AAEAAAAHAAAAAAA2AAEAAAAIAAAAAAA3AAEAAAAJAAAAAAA2AAEAAAAKAAAAAAA3AAEAAAAAAAAAAAAvAAEAAAALAAAAAAA2AAEAAAAMAAAAAAA3AAEAAAANAAAAAAA2AAEAAAAOAAAAAAA3AAEAAAAPAAAAAAAwAAEAAAABAAAAAAAwAAEAAAADAAAAAAAyAAEAAAAQAAAAAAAxAAEAAAARAAAAAAAyAAEAAAASAAAAAAAzAAEAAAATAAAAAAA0AAEAAAAUAAAAAAA1AAEAAAAVAAAAAAA2AAEAAAAWAAAAAAA3AAEAAAAXAAAAAAA4AAEAAAAYAAAAAAAwAAEAAAAZAAAAAAAxAAEAAAAaAAAAAAAyAAEAAAAbAAAAAAAzAAEAAAAcAAAAAAA0AAEAAAAdAAAAAAA1AAEAAAAeAAAAAAA2AAEAAAAfAAAAAAA3AAEAAAAgAAAAAAA4AAEAAAAhAAAAAAA5AAEAAAA=")
 tile_set = SubResource("TileSet_e4moa")
 
-[node name="WinAltar" parent="." instance=ExtResource("3_p2qsd")]
-position = Vector2(262, -32)
+[node name="main_character" parent="." groups=["players"] instance=ExtResource("2_p1ie0")]
+position = Vector2(130, -9)
+controls = ExtResource("3_i6vb5")
 
-[node name="main_character" parent="." instance=ExtResource("2_p1ie0")]
-position = Vector2(119, -36)
+[node name="main_character2" parent="." instance=ExtResource("4_m6swv")]
+position = Vector2(39, -9)
+controls = ExtResource("5_cxshw")
+
+[node name="WinAltar" parent="." instance=ExtResource("3_p2qsd")]
+position = Vector2(452, -34)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_2kg3g")]

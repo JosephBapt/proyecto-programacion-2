@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dheiegrc0eh0i"]
+[gd_scene load_steps=9 format=3 uid="uid://dheiegrc0eh0i"]
 
 [ext_resource type="Script" path="res://scenes/characters/main/main_character.gd" id="1_m83o1"]
-[ext_resource type="Texture2D" uid="uid://c4ic1dt3ylqhu" path="res://assets/Rocky Roads/Enemies/slime_red.png" id="2_r0jgt"]
+[ext_resource type="Texture2D" uid="uid://byiy0t7hb4iw2" path="res://assets/Rocky Roads/Enemies/slime_red_high.png" id="2_vovno"]
 
 [sub_resource type="Animation" id="Animation_nr8li"]
 length = 0.001
@@ -33,6 +33,21 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_ojgmo"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 0, 6]
+}
+
 [sub_resource type="Animation" id="Animation_8vv23"]
 resource_name = "walk"
 tracks/0/type = "value"
@@ -52,18 +67,20 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_nr8li"),
 "idle": SubResource("Animation_qoe6j"),
+"jump": SubResource("Animation_ojgmo"),
 "walk": SubResource("Animation_8vv23")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2tcw"]
-size = Vector2(20, 10)
+size = Vector2(16, 10)
 
 [node name="main_character" type="CharacterBody2D"]
 script = ExtResource("1_m83o1")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_r0jgt")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_vovno")
 hframes = 5
 vframes = 2
 
@@ -77,5 +94,5 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_f2tcw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(2.25, 2.25)
 position_smoothing_enabled = true
