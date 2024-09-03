@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dheiegrc0eh0i"]
 
 [ext_resource type="Script" path="res://scenes/characters/main/main_character.gd" id="1_m83o1"]
-[ext_resource type="Texture2D" uid="uid://byiy0t7hb4iw2" path="res://assets/Rocky Roads/Enemies/slime_red_high.png" id="2_vovno"]
+[ext_resource type="Texture2D" uid="uid://c4ic1dt3ylqhu" path="res://assets/Rocky Roads/Enemies/slime_red.png" id="2_r0jgt"]
 
 [sub_resource type="Animation" id="Animation_nr8li"]
 length = 0.001
@@ -79,8 +79,7 @@ script = ExtResource("1_m83o1")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_vovno")
+texture = ExtResource("2_r0jgt")
 hframes = 5
 vframes = 2
 
