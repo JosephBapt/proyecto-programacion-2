@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://0x5co1ep2loi"]
+[gd_scene load_steps=7 format=3 uid="uid://0x5co1ep2loi"]
 
 [ext_resource type="Script" path="res://scenes/menus/levelSelector/level_selector.gd" id="1_w4131"]
 [ext_resource type="Texture2D" uid="uid://dq5j14q5iea4a" path="res://assets/pruebas/background1.png" id="2_u5ijo"]
 [ext_resource type="Texture2D" uid="uid://d32mfn87uvsbw" path="res://assets/pruebas/background2.png" id="3_4uw31"]
 [ext_resource type="Texture2D" uid="uid://hporea17sbrc" path="res://assets/pruebas/background3.png" id="4_r0jr5"]
-[ext_resource type="Texture2D" uid="uid://k82wqv6ye87q" path="res://assets/pixelfantasy_caves/background4a.png" id="5_iojwr"]
-[ext_resource type="Texture2D" uid="uid://11yew04ygliv" path="res://assets/random.png" id="6_888vy"]
-[ext_resource type="Texture2D" uid="uid://c7ptjou3lkdtg" path="res://assets/slime_blue_alone.png" id="7_wsshq"]
+[ext_resource type="Texture2D" uid="uid://k82wqv6ye87q" path="res://assets/pruebas/background4a.png" id="5_iojwr"]
 
 [sub_resource type="Theme" id="Theme_q7g67"]
 
@@ -45,32 +43,34 @@ texture = ExtResource("4_r0jr5")
 layout_mode = 2
 texture = ExtResource("5_iojwr")
 
-[node name="TextureButton" type="TextureButton" parent="."]
-layout_mode = 2
-offset_left = 98.0
-offset_top = 415.0
-offset_right = 162.0
-offset_bottom = 479.0
-texture_normal = ExtResource("6_888vy")
-texture_hover = ExtResource("7_wsshq")
-texture_focused = ExtResource("7_wsshq")
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2"]
 layout_mode = 2
-offset_left = 211.0
-offset_top = 415.0
-offset_right = 275.0
-offset_bottom = 479.0
-texture_normal = ExtResource("6_888vy")
-texture_hover = ExtResource("7_wsshq")
-texture_focused = ExtResource("7_wsshq")
 
-[node name="TextureButton3" type="TextureButton" parent="."]
+[node name="Level1" type="Button" parent="PanelContainer2/VBoxContainer"]
 layout_mode = 2
-offset_left = 333.0
-offset_top = 415.0
-offset_right = 397.0
-offset_bottom = 479.0
-texture_normal = ExtResource("6_888vy")
-texture_hover = ExtResource("7_wsshq")
-texture_focused = ExtResource("7_wsshq")
+disabled = true
+text = "Nivel 1"
+
+[node name="Level2" type="Button" parent="PanelContainer2/VBoxContainer"]
+layout_mode = 2
+disabled = true
+text = "Nivel 2"
+
+[connection signal="pressed" from="PanelContainer2/VBoxContainer/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="PanelContainer2/VBoxContainer/Level2" to="." method="_on_level_2_pressed"]
