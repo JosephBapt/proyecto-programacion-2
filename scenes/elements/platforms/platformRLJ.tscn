@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://1ln0f7uodx4e"]
+
+[ext_resource type="Script" path="res://scenes/elements/platforms/platformRLJ.gd" id="1_cuqxr"]
+[ext_resource type="Texture2D" uid="uid://du81dkbpujs6j" path="res://assets/pruebas/mainlev_build.png" id="2_rbv6m"]
+
+[sub_resource type="Curve2D" id="Curve2D_6a2bt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 80, 90, 0, 0, 0, 0, 273.333, 90)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bt6kc"]
+size = Vector2(48, 17.9286)
+
+[node name="PlatformRLJ" type="Path2D"]
+position = Vector2(-96, -72)
+scale = Vector2(1.2, 0.8)
+curve = SubResource("Curve2D_6a2bt")
+
+[node name="pathRL" type="PathFollow2D" parent="."]
+position = Vector2(80, 90)
+loop = false
+script = ExtResource("1_cuqxr")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="pathRL"]
+
+[node name="Sprite2D" type="Sprite2D" parent="pathRL/StaticBody2D"]
+position = Vector2(0, -0.688873)
+scale = Vector2(1, 1.07014)
+texture = ExtResource("2_rbv6m")
+region_enabled = true
+region_rect = Rect2(960, 192, 48, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pathRL/StaticBody2D"]
+position = Vector2(0, -1.03573)
+shape = SubResource("RectangleShape2D_bt6kc")

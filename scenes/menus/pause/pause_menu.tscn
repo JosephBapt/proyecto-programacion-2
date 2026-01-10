@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c08oho5yfh0ph"]
+[gd_scene load_steps=8 format=3 uid="uid://c08oho5yfh0ph"]
 
 [ext_resource type="Script" path="res://scenes/menus/pause/pause_menu.gd" id="1_2apaf"]
 [ext_resource type="Shader" path="res://scenes/menus/pause/pause_menu.gdshader" id="1_ry55k"]
+[ext_resource type="AudioStream" uid="uid://c0grwfcb3b2wq" path="res://assets/sounds/click-for-game-menu-131903.mp3" id="3_ylbn5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xh86x"]
 shader = ExtResource("1_ry55k")
@@ -84,8 +85,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 1.0
-offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -117,15 +116,20 @@ text = "  resume  "
 layout_mode = 2
 text = "  restart  "
 
-[node name="quit" type="Button" parent="PanelContainer/VBoxContainer"]
+[node name="go_menu" type="Button" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "  quit  "
+text = "  Go to main menu  "
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_bvxt8")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ylbn5")
+volume_db = -30.427
+autoplay = true
+
 [connection signal="pressed" from="PanelContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/go_menu" to="." method="_on_quit_pressed"]

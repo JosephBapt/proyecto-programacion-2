@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8qtn70opsl6v"]
+
+[ext_resource type="Script" path="res://scenes/elements/win_door/door.gd" id="1_0n6ps"]
+[ext_resource type="Texture2D" uid="uid://dt3furukjnenx" path="res://assets/Door.png" id="2_q4d64"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiiq7"]
+size = Vector2(48, 32)
+
+[node name="WinDoor" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Altar" type="Area2D" parent="."]
+script = ExtResource("1_0n6ps")
+
+[node name="Door" type="Sprite2D" parent="Altar"]
+texture = ExtResource("2_q4d64")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Altar"]
+position = Vector2(0, 16)
+shape = SubResource("RectangleShape2D_kiiq7")
+
+[connection signal="body_entered" from="Altar" to="Altar" method="_on_body_entered"]
+[connection signal="body_exited" from="Altar" to="Altar" method="_on_body_exited"]

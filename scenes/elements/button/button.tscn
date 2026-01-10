@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dydued2sxjb8m"]
+[gd_scene load_steps=5 format=3 uid="uid://dydued2sxjb8m"]
 
 [ext_resource type="Script" path="res://scenes/elements/button/button.gd" id="1_te0rw"]
 [ext_resource type="Texture2D" uid="uid://mtdbusk8vlge" path="res://assets/button.png" id="2_g1bjp"]
+[ext_resource type="AudioStream" uid="uid://djn1vgc3ssf75" path="res://assets/sounds/button-8-88355.mp3" id="3_gslgv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ujtdy"]
 size = Vector2(17, 17)
@@ -26,7 +27,12 @@ hframes = 2
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PackedVector2Array(-12, -2, 12, -2, 20, 6, -20, 6)
+polygon = PackedVector2Array(-12, -2, 12, -2, 22, 6, -20, 6)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gslgv")
+volume_db = -11.965
 
 [connection signal="body_entered" from="button" to="button" method="_on_body_entered"]
 [connection signal="body_exited" from="button" to="button" method="_on_body_exited"]
+[connection signal="on_state_changed" from="button" to="." method="_on_Button_on_state_changed"]

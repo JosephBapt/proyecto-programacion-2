@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://chlv6tt0tyqgc"]
+[gd_scene load_steps=9 format=3 uid="uid://chlv6tt0tyqgc"]
 
 [ext_resource type="Script" path="res://scenes/characters/main/main_character.gd" id="1_m83o1"]
 [ext_resource type="Texture2D" uid="uid://cr5n6e8mtt1kg" path="res://assets/Rocky Roads/Enemies/slime_blue.png" id="1_qcx5q"]
+[ext_resource type="AudioStream" uid="uid://bcl5nfdr67aeq" path="res://assets/sounds/jump_sound.mp3" id="3_c03no"]
 
 [sub_resource type="Animation" id="Animation_nr8li"]
 length = 0.001
@@ -78,4 +79,15 @@ shape = SubResource("RectangleShape2D_f2tcw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.25, 2.25)
+limit_left = 0
+limit_top = 0
+limit_right = 768
+limit_bottom = 390
+limit_smoothed = true
 position_smoothing_enabled = true
+editor_draw_limits = true
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-111, 25)
+stream = ExtResource("3_c03no")
+volume_db = -10.0

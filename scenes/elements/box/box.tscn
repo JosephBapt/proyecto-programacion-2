@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://sc5nnits4ksp"]
+
+[ext_resource type="Script" path="res://scenes/elements/box/box.gd" id="1_i61ig"]
+[ext_resource type="Texture2D" uid="uid://du81dkbpujs6j" path="res://assets/pruebas/mainlev_build.png" id="1_ym1ki"]
+[ext_resource type="AudioStream" uid="uid://bbvpplumd2vel" path="res://assets/sounds/dragging-on-floor-82114.mp3" id="3_el2ha"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mr3th"]
+size = Vector2(46, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7peq2"]
+size = Vector2(1, 44)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjjve"]
+size = Vector2(1, 44)
+
+[node name="Box" type="CharacterBody2D" groups=["push"]]
+script = ExtResource("1_i61ig")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ym1ki")
+region_enabled = true
+region_rect = Rect2(752, 96, 48, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mr3th")
+
+[node name="Left" type="Area2D" parent="."]
+collision_priority = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left"]
+position = Vector2(23.5, 2)
+shape = SubResource("RectangleShape2D_7peq2")
+debug_color = Color(0.968692, 0.146741, 0.258411, 0.42)
+
+[node name="Right" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right"]
+position = Vector2(-23.5, 2)
+shape = SubResource("RectangleShape2D_rjjve")
+debug_color = Color(0.933142, 0.217245, 0.364868, 0.42)
+
+[node name="Dragging-on-floor-82114" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-35, 14)
+stream = ExtResource("3_el2ha")
+
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_exited" from="Left" to="." method="_on_left_body_exited"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_exited" from="Right" to="." method="_on_right_body_exited"]

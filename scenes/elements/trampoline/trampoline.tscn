@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0lx84f00f76q"]
+
+[ext_resource type="Script" path="res://scenes/elements/trampoline/trampoline.gd" id="1_rp6gx"]
+[ext_resource type="Texture2D" uid="uid://du81dkbpujs6j" path="res://assets/pruebas/mainlev_build.png" id="2_mby4m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocsco"]
+size = Vector2(36, 9)
+
+[node name="Trampoline" type="Area2D"]
+scale = Vector2(1.2, 1)
+script = ExtResource("1_rp6gx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.2, 1)
+texture = ExtResource("2_mby4m")
+region_enabled = true
+region_rect = Rect2(864, 16, 32, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_ocsco")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-11.875, -2)
+scale = Vector2(1.1875, 1)
+polygon = PackedVector2Array(-6, -2, 26, -2, 30, 6, -10, 6)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
